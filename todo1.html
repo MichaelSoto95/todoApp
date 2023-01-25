@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+   <div class="todoApp">
+ 
+    <button onclick="addTodo()" >Add to list</button>
+    <button onclick="removeTodo()" >Remove from list</button>
+    <input type="text" id="todoTitle"></input> 
+    <input type="date" id="datePicker">
+    <input type="time" id="timePicker">
+    <h1>Your todo list</h1>
+     </div>
+
+    <!-- <div id="mydiv" onclick="btncolor(),makeActive()">Hello</div>
+<button onclick="btncolor2()">color change</button>
+<div id="newId" onclick="makeActive()"></div> -->
+<div id="todo-list"></div>
+    <script>
+  
+        const todo =['Get groceries','Wash Car', 'Make dinner'];
+
+        let todolist = [{title:'Get groceries',
+                           duedate:'2021-10-04',
+                            id:'id1',
+                            time:'10:30pm'}, 
+
+                           {title:'Wash Car',
+                           duedate:'2021-10-04',
+                            id:'id2',
+                            time:'10:30pm'},
+
+                           {title:'Get groceries',
+                           duedate:'2021-10-04',
+                            id:'id3',
+                            time:'10:30pm'}];
+        render();
+ 
+        function addTodo(){
+      //borramos para luego hacer render updated
+       
+       const date =document.getElementById('datePicker').value;
+        const title =document.getElementById('todoTitle').value;//tomamos el valor del textbox por el id y ponemos value
+        const id =''+new Date().getTime();
+        const time =document.getElementById('timePicker').value;
+        todolist.push({title :title,
+                      duedate:date,
+                      id :id,
+                      time:time});//anademos el textbox y lo anadimos al arreglo
+        render();//refrescamos
+    }
+
+
+   function render(){
+    document.getElementById('todo-list').innerHTML ="";
+        todolist.forEach(function(todoList){
+        const element = document.createElement('div');
+        element.innerText = todoList.title.toUpperCase()+' '+todoList.duedate+' '+todoList.time;
+     
+        const deleteButton = document.createElement('button');
+        deleteButton.innerText='Delete';
+        element.appendChild(deleteButton);
+       deleteButton.style= 'margin-left:12px'
+       deleteButton.id =todoList.id;
+        deleteButton.onclick =deleteTodo;
+        let list = document.getElementById('todo-list');
+        list.appendChild(element);
+        list.style='background-color:yellow'
+        document.getElementById('datePicker').value ='';
+        document.getElementById('timePicker').value ='';
+        document.getElementById('todoTitle').value ='';
+        });
+   }
+
+
+     function deleteTodo (event){
+      const deleteButton = event.target;
+      const idToDelete = deleteButton.id;
+
+      todolist = todolist.filter(function(todo){
+        if (todo.id === idToDelete) {
+           return false; 
+        }
+        else{
+            return true;
+        }
+        })
+  render();
+   }
+
+
+    function removeTodo(){
+    document.getElementById('todo-list').innerHTML ="";
+    todolist.pop();
+    render();
+   }
+    
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>

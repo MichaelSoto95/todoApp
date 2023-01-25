@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.todoApp{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+    gap: 15px;
+    padding: 5px;
+   background-color: aqua;
+    
+}
+
+#todo-list{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+   
+}
+.body{
+    background:white;
+  
+}
+#mydiv{
+    height: 100px;
+    width: 100px;
+    background-color: #225599;
+    cursor: pointer;
+    position: relative;
+    transition: ease-in 1s;
+    opacity:.5;
+    border-radius: 50px;
+
+}
+
+#newId{
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    background-color: #225599;
+}
+
+
+.active{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: ease-in 5s;
+    color:white;
+}

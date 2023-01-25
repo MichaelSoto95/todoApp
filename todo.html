@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+  <title>javascript practice</title>
+</head>
+<body>
+ <button  onclick="clear()">clear</button>
+ <button onclick ="addTodo()">Add todo</button>
+ <input id="todo-title" type="text" />
+ <div id="todo-list"></div>
+ 
+<button onclick="addCart()" id="apple" >Apple</button>
+<button onclick="addCart()" id="tomato">Tomato</button>
+<Button onclick="addCart()" id="egg">Eggs</Button>
+<Button onclick="clearcart()">Clear</Button>
+<div id="cart-list"></div>
+  <script>
+  const todos = ['Get groceries ' ,' Wash Car' , ' Make Dinner'];
+  
+   const cart =[]; // arreglo vacio
+   function addCart(){
+    
+    cart.push('tomato');//anadimos elemento al arreglo
+    renderCart();
+   } 
+    
+
+   function renderCart(){
+       //borro la list para ponerla
+       document.getElementById('cart-list').innerHTML ='';//pomemos el arglo bacio para no vol ver a entrar varios elememtos
+
+      cart.forEach(function (cartTitle){
+        const Cartelement =document.createElement('div'); // variable para crear el div con el arreglo
+        Cartelement.innerText =cartTitle;
+        const cartList =document.getElementById('cart-list');
+        cartList.appendChild(Cartelement)
+      })
+   }
+   function clearcart(){
+  
+    cart.pop();
+    renderCart();
+   }
+
+
+function addTodo(){
+ const textbox = document.getElementById('todo-title');
+  const todo =textbox.value ;
+    todos.push(todo);
+  render();
+}
+
+addTodo();
+
+function render(){
+  //reset a la lista
+document.getElementById('todo-list').innerHTML ='';
+//sevuelve a escribir
+  todos.forEach(function (todoTitle){
+const element = document.createElement('div');
+element.innerText = todoTitle;
+const todoList = document.getElementById('todo-list');
+todoList.appendChild(element)
+
+})
+}
+
+
+function clear(){
+  document.getElementById('todo-list').innerHTML ='';
+}
+function done(){
+  document.body.innerHTML ='Done';
+}
+
+
+
+
+</script>
+</body>
+</html>
