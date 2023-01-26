@@ -8,7 +8,44 @@
   <title>javascript practice</title>
 </head>
 <body>
- <button  onclick="clear()">clear</button>
+  <style>
+#mydiv1{
+  height: 100px;
+  width: 200px;
+  background-color: aqua;
+  transition: ease-in;
+
+}
+.active1{
+ transform: scale(1.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  translate: (100px);
+
+}
+.parrentdiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+}
+  </style>
+<div class="parrentdiv"> 
+  <div id="mydiv1" onclick="active1()">mydiv</div>
+  <div id="mydiv1" onclick="active1()">mydiv</div>
+  <div id="mydiv1" onclick="active1()">mydiv</div> 
+ </div>
+
+  <script>
+   const myDiv1=document.getElementById("mydiv1");
+   function active1(){
+
+  myDiv1.classList.toggle("active1");
+ }
+
+  </script>
+ <!-- <button  onclick="clear()">clear</button>
  <button onclick ="addTodo()">Add todo</button>
  <input id="todo-title" type="text" />
  <div id="todo-list"></div>
@@ -17,8 +54,12 @@
 <button onclick="addCart()" id="tomato">Tomato</button>
 <Button onclick="addCart()" id="egg">Eggs</Button>
 <Button onclick="clearcart()">Clear</Button>
-<div id="cart-list"></div>
-  <script>
+<div id="cart-list"></div> -->
+
+
+
+
+  <!-- <script>
   const todos = ['Get groceries ' ,' Wash Car' , ' Make Dinner'];
   
    const cart =[]; // arreglo vacio
@@ -80,6 +121,6 @@ function done(){
 
 
 
-</script>
+</script> -->
 </body>
 </html>
